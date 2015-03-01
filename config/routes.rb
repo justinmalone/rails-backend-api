@@ -7,19 +7,16 @@ Rails.application.routes.draw do
   namespace :api do
 
     namespace :v1 do
+      devise_for :users
 
-      match 'users'             => 'users#create',    via: :post
-      match 'user'                  => 'users#update',      via: :put
-
-      # auth
-      match 'login'     => 'users#login',           via: :put
-      match 'forgot_password' => 'users#forgot_password', via: :put
+      match 'user'  => 'users#show',    via: :get
+      match 'user'  => 'users#update',  via: :put
 
     end
     
   end
 
-  root to: "pages#home"
+  root to: 'pages#home'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
